@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitchen Sales Developer</title>
+    <link rel="icon" href="https://i.ibb.co/3mh5s5PT/Whats-App-Image-2025-05-28-at-3-53-39-PM.jpg" type="image/jpeg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Base styles for body and container */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa; /* Lighter, professional background */
+            color: #343a40; /* Darker, more legible text */
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Section Heading styles - more refined underline */
+        .section-heading {
+            font-size: 3rem; /* Slightly larger heading */
+            font-weight: 800;
+            color: #212529; /* Even darker for strong contrast */
+            margin-bottom: 3rem; /* Increased margin */
+            text-align: center;
+            position: relative;
+            padding-bottom: 0.75rem; /* More space for underline */
+        }
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 100px; /* Wider underline */
+            height: 5px; /* Thicker underline */
+            background-color: #e67e22; /* Primary orange */
+            border-radius: 3px;
+        }
+
+        /* Primary Button styles - softer shadow, better hover */
+        .btn-primary {
+            background-color: #e67e22;
+            color: white;
+            padding: 1rem 2.2rem; /* More generous padding */
+            border-radius: 0.75rem;
+            font-weight: 700;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 6px 15px rgba(230, 126, 34, 0.25); /* Softer, more diffused shadow */
+        }
+        .btn-primary:hover {
+            background-color: #d35400;
+            transform: translateY(-3px); /* More pronounced lift */
+            box-shadow: 0 8px 20px rgba(211, 84, 0, 0.35);
+        }
+
+        /* Card styles - more subtle, elegant design */
+        .card {
+            background-color: white;
+            border-radius: 1.5rem; /* Even more rounded corners */
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08); /* Lighter, larger shadow */
+            padding: 3.5rem; /* More generous padding */
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            border: none; /* No visible border */
+            overflow: hidden; /* Ensures content stays within rounded corners */
+        }
+        .card:hover {
+            transform: translateY(-15px) scale(1.02); /* More significant lift and scale */
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15); /* Stronger, more diffused shadow on hover */
+        }
+
+        /* Hero Section with Background Image - improved overlay and text */
+        .hero-section-bg {
+            background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            background-attachment: fixed;
+            color: white;
+            text-align: center;
+            padding: 6rem 0; /* More vertical padding */
+            border-bottom-left-radius: 2rem; /* Rounded bottom corners */
+            border-bottom-right-radius: 2rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .hero-section-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.75); /* Slightly darker overlay for better text contrast */
+            z-index: -1;
+        }
+        .hero-section-bg .container {
+            position: relative;
+            z-index: 2;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Softer text shadow */
+        }
+        .hero-section-bg h1 {
+            font-size: 5rem; /* Even larger hero heading */
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+        .hero-section-bg p {
+            font-size: 1.6rem; /* Slightly larger hero paragraph */
+            font-weight: 400;
+            margin-bottom: 2.5rem;
+            max-width: 4xl; /* Wider text block */
+            opacity: 0.95;
+        }
+
+        /* About Section with Background Image - improved overlay and text */
+        #about {
+            background-image: url('https://images.unsplash.com/photo-1555396273-367ea4eb6ef8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            background-attachment: fixed;
+            color: white;
+            padding: 6rem 0; /* Consistent vertical padding */
+        }
+        #about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Consistent overlay */
+            z-index: -1;
+        }
+        #about .section-heading {
+            color: white;
+        }
+        #about p {
+            color: #f0f0f0; /* Lighter text for better contrast */
+            font-size: 1.25rem; /* Consistent paragraph size */
+        }
+        #about img {
+            border-radius: 1.5rem; /* Consistent rounded corners */
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2); /* Stronger shadow for images */
+        }
+
+        /* Packages Section with Background Image - refined overlay */
+        #packages {
+            background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            background-attachment: fixed;
+            padding: 6rem 0; /* Consistent vertical padding */
+        }
+        #packages::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.85); /* Slightly less transparent for better card readability */
+            z-index: -1;
+        }
+        #packages .section-heading {
+            color: #212529;
+        }
+        #packages .card {
+            background-color: white;
+            border: 1px solid #e0e0e0; /* Subtle border for definition */
+        }
+        #packages .card ul {
+            list-style: none; /* Remove default list style */
+            padding-left: 0;
+        }
+        #packages .card li {
+            font-size: 1.15rem; /* Slightly larger list items */
+            margin-bottom: 0.75rem; /* More space between items */
+        }
+        #packages .card li i {
+            font-size: 2.25rem; /* Larger checkmark icons */
+            color: #28a745; /* Brighter green for checkmarks */
+        }
+
+
+        /* Floating Icons */
+        .whatsapp-float, .call-float {
+            position: fixed; /* Crucial for floating */
+            width: 60px;
+            height: 60px;
+            font-size: 28px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            z-index: 9999; /* Very high z-index to ensure visibility */
+        }
+        .whatsapp-float:hover, .call-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 7px 14px rgba(0, 0, 0, 0.3);
+        }
+
+        .whatsapp-float {
+            bottom: 20px; /* Position from bottom */
+            right: 20px; /* Position from right */
+            background-color: #28a745; /* WhatsApp green */
+        }
+        .whatsapp-float:hover {
+            background-color: #218838;
+        }
+
+        .call-float {
+            bottom: 100px; /* Position above WhatsApp icon */
+            right: 20px; /* Position from right */
+            background-color: #007bff; /* Call button blue */
+        }
+        .call-float:hover {
+            background-color: #0056b3;
+        }
+
+        /* Logo and Company Name */
+        .header-logo {
+            height: 75px; /* Adjusted logo height */
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* Softer shadow */
+            border-radius: 0.75rem; /* More rounded */
+        }
+        .company-name {
+            font-size: 2.6rem; /* Adjusted font size */
+            font-weight: 800; /* Bolder */
+            color: #212529; /* Darker */
+            text-shadow: none; /* Removed text shadow for cleaner look */
+        }
+
+        /* Contact form input styling - more subtle focus */
+        .contact-form-input {
+            background-color: #fefefe; /* Slightly off-white */
+            color: #495057; /* Darker text */
+            border: 1px solid #ced4da; /* Subtle border */
+            padding: 1rem; /* More padding */
+            border-radius: 0.6rem; /* Slightly more rounded */
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .contact-form-input:focus {
+            border-color: #e67e22;
+            box-shadow: 0 0 0 0.2rem rgba(230, 126, 34, 0.25); /* Softer glow */
+        }
+        .contact-form-input::placeholder {
+            color: #6c757d; /* More neutral placeholder */
+        }
+
+        /* Footer styling - darker, more elegant */
+        footer {
+            background-color: #212529; /* Very dark gray/black */
+            color: #e9ecef; /* Lighter text */
+            padding: 3rem 0; /* More padding */
+        }
+        footer a {
+            color: #e9ecef;
+            transition: color 0.3s ease;
+        }
+        footer a:hover {
+            color: #e67e22;
+        }
+
+        /* Contact Section Background Image - refined overlay for form readability */
+        #contact {
+            background-image: url('https://images.unsplash.com/photo-1543286386-713ed13885a7?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+            z-index: 1;
+            padding: 6rem 0; /* Consistent vertical padding */
+            border-top-left-radius: 2rem; /* Rounded top corners */
+            border-top-right-radius: 2rem;
+            box-shadow: 0 -10px 20px rgba(0,0,0,0.1);
+        }
+        #contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Darker overlay for text and form contrast */
+            z-index: -1;
+        }
+        #contact .section-heading {
+            color: white;
+        }
+        #contact p {
+            color: #dee2e6; /* Lighter text for readability */
+        }
+        #contact form {
+            background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent white form background */
+            padding: 3.5rem; /* More padding */
+            border-radius: 1.5rem; /* More rounded */
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15); /* Stronger shadow */
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-white shadow-lg py-5 sticky top-0 z-50">
+        <div class="container flex justify-between items-center flex-wrap">
+            <a href="#" class="text-2xl font-bold text-gray-800 rounded-md p-2 flex items-center">
+                <img src="https://i.ibb.co/3mh5s5PT/Whats-App-Image-2025-05-28-at-3-53-39-PM.jpg" alt="Kitchen Sales Developer Logo" class="header-logo mr-2">
+                <span class="company-name">Kitchen Sales Developer</span>
+            </a>
+            <button id="mobile-menu-button" class="md:hidden text-gray-600 focus:outline-none p-2 rounded-md hover:bg-gray-100">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+            <nav id="mobile-menu" class="hidden w-full md:flex md:w-auto md:space-x-8 mt-4 md:mt-0 flex-col md:flex-row items-center">
+                <a href="#home" class="text-gray-700 hover:text-orange-600 font-semibold transition duration-300 rounded-md p-2 flex items-center w-full md:w-auto justify-center py-3">
+                    <i class="fas fa-home mr-2"></i>Home
+                </a>
+                <a href="#about" class="text-gray-700 hover:text-orange-600 font-semibold transition duration-300 rounded-md p-2 flex items-center w-full md:w-auto justify-center py-3">
+                    <i class="fas fa-info-circle mr-2"></i>About Us
+                </a>
+                <a href="#packages" class="text-gray-700 hover:text-orange-600 font-semibold transition duration-300 rounded-md p-2 flex items-center w-full md:w-auto justify-center py-3">
+                    <i class="fas fa-box-open mr-2"></i>Packages
+                </a>
+                <a href="#other-services" class="text-gray-700 hover:text-orange-600 font-semibold transition duration-300 rounded-md p-2 flex items-center w-full md:w-auto justify-center py-3">
+                    <i class="fas fa-concierge-bell mr-2"></i>Services
+                </a>
+                <a href="#contact" class="text-gray-700 hover:text-orange-600 font-semibold transition duration-300 rounded-md p-2 flex items-center w-full md:w-auto justify-center py-3">
+                    <i class="fas fa-envelope mr-2"></i>Contact
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero-section-bg text-white py-24 md:py-40">
+        <div class="container">
+            <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-8">
+                Boost Your Restaurant's Online Presence & Sales
+            </h1>
+            <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto opacity-90">
+                We specialize in getting restaurants live on Swiggy & Zomato, optimizing menus, and driving sales growth.
+            </p>
+            <a href="#contact" class="btn-primary inline-block">
+                Get Started Today
+            </a>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 md:py-32 text-white">
+        <div class="container">
+            <h2 class="section-heading">About Us</h2>
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <div class="md:w-1/2 text-center md:text-left">
+                    <p class="leading-relaxed text-xl mb-6">
+                        I am an experienced Restaurant Online Sales & Marketing Developer dedicated to helping eateries thrive in the digital age. My expertise lies in navigating the complexities of online food delivery platforms to maximize your reach and revenue.
+                    </p>
+                    <p class="leading-relaxed text-xl">
+                        With a deep understanding of Swiggy, Zomato, and other online delivery ecosystems, I provide strategic guidance and hands-on support to optimize your online presence, craft compelling menus, and implement effective sales strategies that drive consistent growth.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="packages" class="py-20 md:py-32">
+        <div class="container">
+            <h2 class="section-heading">Our Packages</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="card text-center flex flex-col items-center p-10 border-4 border-orange-400">
+                    <div class="text-5xl font-extrabold text-orange-600 mb-6">12,000/- MONTHLY</div>
+                    <ul class="text-gray-700 text-xl space-y-5 text-left w-full">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-4 text-3xl"></i>
+                            <span>Guaranteed Sales of 1 Lakh</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-4 text-3xl"></i>
+                            <span>3 Swiggy + 3 Zomato ID Registrations</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-4 text-3xl"></i>
+                            <span>Weekly Sales and Ads Performance Reports</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-4 text-3xl"></i>
+                            <span>Two Monthly Menu Optimizations</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-4 text-3xl"></i>
+                            <span>Comprehensive Swiggy & Zomato Onboarding</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-4 text-3xl"></i>
+                            <span>Strategic Menu Re-engineering</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-4 text-3xl"></i>
+                            <span>Enhanced Item Descriptions</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-4 text-3xl"></i>
+                            <span>High-Definition Image Integration</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-4 text-3xl"></i>
+                            <span>Tailored Zomato & Swiggy Growth Strategies</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-4 text-3xl"></i>
+                            <span>Quarterly Staff Performance Guidance</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-4 text-3xl"></i>
+                            <span>Quarterly Menu Management & Updates</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-4 text-3xl"></i>
+                            <span>Access to Top Selling Item Data</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-4 text-3xl"></i>
+                            <span>Monthly Advertising Spend Analysis</span>
+                        </li>
+                    </ul>
+                    <a href="#" onclick="sendPackageToWhatsApp('12,000/- MONTHLY', 'Guaranteed Sales of 1 Lakh, 3 Swiggy + 3 Zomato ID Registrations, Weekly Sales and Ads Performance Reports, Two Monthly Menu Optimizations, Comprehensive Swiggy & Zomato Onboarding, Strategic Menu Re-engineering, Enhanced Item Descriptions, High-Definition Image Integration, Tailored Zomato & Swiggy Growth Strategies, Quarterly Staff Performance Guidance, Quarterly Menu Management & Updates, Access to Top Selling Item Data, Monthly Advertising Spend Analysis')" class="btn-primary mt-12 inline-block">Choose Plan</a>
+                </div>
+
+                <div class="card text-center flex flex-col items-center p-10 border-4 border-orange-600">
+                    <div class="text-5xl font-extrabold text-orange-700 mb-6">24,000/- MONTHLY</div>
+                    <ul class="text-gray-700 text-xl space-y-5 text-left w-full">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-4 text-3xl"></i>
+                            <span>Guaranteed Sales of 3 Lakhs Monthly</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-4 text-3xl"></i>
+                            <span>7 Swiggy + 7 Zomato ID Registrations</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-4 text-3xl"></i>
+                            <span>Weekly Sales and Ads Performance Reports</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-4 text-3xl"></i>
+                            <span>Two Monthly Menu Optimizations</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-4 text-3xl"></i>
+                            <span>Comprehensive Swiggy & Zomato Onboarding</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-4 text-3xl"></i>
+                            <span>Strategic Menu Re-engineering</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-4 text-3xl"></i>
+                            <span>Enhanced Item Descriptions</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-4 text-3xl"></i>
+                            <span>High-Definition Image Integration</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-4 text-3xl"></i>
+                            <span>Tailored Zomato & Swiggy Growth Strategies</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-4 text-3xl"></i>
+                            <span>Quarterly Staff Performance Guidance</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-4 text-3xl"></i>
+                            <span>Quarterly Menu Management & Updates</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-4 text-3xl"></i>
+                            <span>Access to Top Selling Item Data</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-4 text-3xl"></i>
+                            <span>Monthly Advertising Spend Analysis</span>
+                        </li>
+                    </ul>
+                    <a href="#" onclick="sendPackageToWhatsApp('24,000/- MONTHLY', 'Guaranteed Sales of 3 Lakhs Monthly, 7 Swiggy + 7 Zomato ID Registrations, Weekly Sales and Ads Performance Reports, Two Monthly Menu Optimizations, Comprehensive Swiggy & Zomato Onboarding, Strategic Menu Re-engineering, Enhanced Item Descriptions, High-Definition Image Integration, Tailored Zomato & Swiggy Growth Strategies, Quarterly Staff Performance Guidance, Quarterly Menu Management & Updates, Access to Top Selling Item Data, Monthly Advertising Spend Analysis')" class="btn-primary mt-12 inline-block">Choose Plan</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="other-services" class="py-20 md:py-32 bg-gray-100">
+        <div class="container">
+            <h2 class="section-heading">Our Services</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card text-center">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fas fa-store text-5xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-3">Swiggy Onboarding</h3>
+                    <p class="text-gray-600 text-lg">Get your restaurant seamlessly onboarded and live on the Swiggy platform.</p>
+                    <p class="text-xl font-bold text-orange-600 mt-4">₹1,500</p>
+                </div>
+                <div class="card text-center">
+                    <div class="text-purple-600 mb-4">
+                        <i class="fas fa-utensils text-5xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-3">Menu Engineering</h3>
+                    <p class="text-gray-600 text-lg">Optimize your menu for online visibility and customer appeal.</p>
+                    <p class="text-xl font-bold text-orange-600 mt-4">₹1,000</p>
+                </div>
+                <div class="card text-center">
+                    <div class="text-red-600 mb-4">
+                        <i class="fas fa-images text-5xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-3">HD Image Updates (Swiggy & Zomato)</h3>
+                    <p class="text-gray-600 text-lg">Enhance your menu with high-definition images for both Swiggy and Zomato.</p>
+                    <p class="text-xl font-bold text-orange-600 mt-4">₹1,000</p>
+                </div>
+                <div class="card text-center">
+                    <div class="text-yellow-600 mb-4">
+                        <i class="fas fa-star text-5xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-3">Swiggy Rating Enhancement</h3>
+                    <p class="text-gray-600 text-lg">Boost your Swiggy ratings without incurring additional Swiggy charges.</p>
+                    <p class="text-xl font-bold text-orange-600 mt-4">₹40 per rating</p>
+                </div>
+                <div class="card text-center">
+                    <div class="text-green-600 mb-4">
+                        <i class="fas fa-certificate text-5xl"></i> </div>
+                    <h3 class="text-2xl font-semibold mb-3">Food License Procurement</h3>
+                    <p class="text-gray-600 text-lg">Assistance in obtaining or renewing your food license.</p>
+                    <p class="text-xl font-bold text-orange-600 mt-4">₹1,000 per year</p>
+                </div>
+                <div class="card text-center md:col-span-2 lg:col-span-3 flex flex-col items-center">
+                    <div class="mb-6 w-full flex justify-center">
+                        <img src="https://i.ibb.co/KpPNThVc/Whats-App-Image-2025-05-28-at-15-47-56-e3687277.jpg" alt="Boost Your Business with Tashu - Cloud Kitchen" class="w-full max-w-lg h-auto rounded-xl shadow-md border border-gray-200">
+                    </div>
+                    <div class="text-green-600 mb-4">
+                        <i class="fas fa-chart-pie text-5xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-3">Discover Top Selling Items in Your Area</h3>
+                    <p class="text-gray-600 text-lg mb-6">Want to know the top-selling items in your area? Contact us to find out!</p>
+                    <a href="https://wa.me/919711737450?text=Hello! I'm interested in knowing the top selling items in my area." class="btn-primary inline-block" target="_blank">
+                        WhatsApp Me
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 md:py-32 text-white">
+        <div class="container text-center">
+            <h2 class="section-heading text-white">Contact Us</h2>
+            <p class="text-xl mb-10 max-w-2xl mx-auto opacity-90">
+                Ready to take your restaurant's online business to the next level? Get in touch today!
+            </p>
+            <form class="max-w-xl mx-auto bg-white p-10 rounded-xl shadow-2xl" onsubmit="sendFormToWhatsApp(event)">
+                <div class="mb-6">
+                    <input type="text" id="contactName" placeholder="Your Name" class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 text-black contact-form-input" required>
+                </div>
+                <div class="mb-6">
+                    <input type="email" id="contactEmail" placeholder="Your Email" class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 text-black contact-form-input" required>
+                </div>
+                <div class="mb-8">
+                    <textarea id="contactMessage" placeholder="Your Message" rows="6" class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 text-black contact-form-input" required></textarea>
+                </div>
+                <button type="submit" class="btn-primary w-full shadow-lg hover:shadow-xl transition duration-300">
+                    Send Message
+                </button>
+            </form>
+            <div class="mt-12 text-xl">
+                <p class="flex items-center justify-center mb-4">
+                    <i class="fas fa-envelope text-white mr-3 text-2xl"></i> Email: <a href="mailto:kitchensalesdevloper@gmail.com" class="underline hover:text-gray-200 ml-2">kitchensalesdevloper@gmail.com</a>
+                </p>
+                <p class="flex items-center justify-center mb-4">
+                    <i class="fas fa-phone-alt text-white mr-3 text-2xl"></i> Phone: <a href="tel:+919711737450" class="underline hover:text-gray-200 ml-2">+91 97117 37450</a>
+                </p>
+                <p class="flex items-center justify-center">
+                    <i class="fab fa-whatsapp text-white mr-3 text-2xl"></i> WhatsApp: <a href="https://wa.me/919711737450?text=Hello! I'm interested in your restaurant online sales services." class="underline hover:text-gray-200 ml-2" target="_blank">97117 37450</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 text-white py-10">
+        <div class="container text-center">
+            <p class="text-lg">&copy; 2020 Kitchen Sales Developer. All rights reserved.</p>
+            <div class="flex justify-center space-x-6 mt-6">
+                <a href="#" class="text-gray-400 hover:text-orange-500 transition duration-300 text-2xl"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="text-gray-400 hover:text-orange-500 transition duration-300 text-2xl"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-gray-400 hover:text-orange-500 transition duration-300 text-2xl"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/919711737450?text=Hello! I'm interested in your restaurant online sales services." class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <a href="tel:+919711737450" class="call-float" aria-label="Call Us">
+        <i class="fas fa-phone"></i>
+    </a>
+
+    <script>
+        const phoneNumber = '919711737450'; // Your WhatsApp and Call number with country code
+
+        // Function to send Contact Us form data to WhatsApp
+        function sendFormToWhatsApp(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            const name = document.getElementById('contactName').value;
+            const email = document.getElementById('contactEmail').value;
+            const message = document.getElementById('contactMessage').value;
+
+            const whatsappMessage = `Hello Kitchen Sales Developer,\n\nI have a new message from your website:\n\nName: ${name}\nEmail: ${email}\nMessage: ${message}\n\nLooking forward to your response!`;
+
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+            window.open(whatsappURL, '_blank'); // Open WhatsApp in a new tab
+        }
+
+        // Function to send package details to WhatsApp
+        function sendPackageToWhatsApp(packageName, packageFeatures) {
+            // Split the features string into an array, trim whitespace, and filter out empty strings
+            const featuresArray = packageFeatures.split(',').map(feature => feature.trim()).filter(feature => feature.length > 0);
+
+            // Format features as a numbered list
+            let formattedFeatures = '';
+            featuresArray.forEach((feature, index) => {
+                formattedFeatures += `${index + 1}. ${feature}\n`;
+            });
+
+            const whatsappMessage = `Hello Kitchen Sales Developer,\n\nI'm interested in the following package:\n\nPackage: ${packageName}\nFeatures:\n${formattedFeatures}\nPlease contact me to discuss further.`;
+
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+            window.open(whatsappURL, '_blank'); // Open WhatsApp in a new tab
+        }
+
+        // Mobile menu toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                });
+
+                // Close menu when a link is clicked (for smoother UX)
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (!mobileMenu.classList.contains('hidden')) {
+                            mobileMenu.classList.add('hidden');
+                        }
+                    });
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
