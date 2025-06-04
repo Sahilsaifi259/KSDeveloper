@@ -4,33 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kitchen Sales Developer</title>
+    <!-- Google Site Verification Meta Tag -->
+    <meta name="google-site-verification" content="vdDIV1mucEkt0c4dzWe9-nzTS0FxWhoTNHVevnzCSmc" />
+    <!-- Favicon / Tab Icon -->
     <link rel="icon" href="https://i.ibb.co/3mh5s5PT/Whats-App-Image-2025-05-28-at-3-53-39-PM.jpg" type="image/jpeg">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* Define CSS Variables for a more cohesive and colorful theme */
+        :root {
+            --primary-orange: #e67e22;
+            --dark-orange: #d35400;
+            --accent-blue: #3498db;
+            --dark-blue: #2980b9;
+            --text-dark: #212529;
+            --text-light: #f8f9fa;
+            --bg-light: #f8f9fa;
+            --bg-dark: #212529;
+            --card-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            --card-hover-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+        }
+
         /* Base styles for body and container */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f8f9fa; /* Lighter, professional background */
-            color: #343a40; /* Darker, more legible text */
+            background-color: var(--bg-light);
+            color: var(--text-dark);
             line-height: 1.6;
+            overflow-x: hidden; /* Prevent horizontal scroll on animations */
         }
         .container {
-            max-width: 1200px;
+            max-width: 1400px; /* Increased max-width for wider content */
             margin: 0 auto;
             padding: 0 1.5rem;
         }
 
+        /* Keyframe Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); }
+            50% { transform: scale(1.05); box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); }
+            100% { transform: scale(1); box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); }
+        }
+
         /* Section Heading styles - more refined underline */
         .section-heading {
-            font-size: 3rem; /* Slightly larger heading */
+            font-size: 3rem;
             font-weight: 800;
-            color: #212529; /* Even darker for strong contrast */
-            margin-bottom: 3rem; /* Increased margin */
+            color: var(--text-dark);
+            margin-bottom: 3rem;
             text-align: center;
             position: relative;
-            padding-bottom: 0.75rem; /* More space for underline */
+            padding-bottom: 0.75rem;
+            animation: fadeIn 1s ease-out; /* Added animation */
         }
         .section-heading::after {
             content: '';
@@ -38,41 +79,44 @@
             left: 50%;
             bottom: 0;
             transform: translateX(-50%);
-            width: 100px; /* Wider underline */
-            height: 5px; /* Thicker underline */
-            background-color: #e67e22; /* Primary orange */
+            width: 100px;
+            height: 5px;
+            background-color: var(--primary-orange);
             border-radius: 3px;
         }
 
-        /* Primary Button styles - softer shadow, better hover */
+        /* Primary Button styles - softer shadow, better hover, subtle gradient */
         .btn-primary {
-            background-color: #e67e22;
+            background: linear-gradient(45deg, var(--primary-orange), var(--dark-orange)); /* Gradient */
             color: white;
-            padding: 1rem 2.2rem; /* More generous padding */
+            padding: 1rem 2.2rem;
             border-radius: 0.75rem;
             font-weight: 700;
-            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 6px 15px rgba(230, 126, 34, 0.25); /* Softer, more diffused shadow */
+            transition: all 0.3s ease; /* All properties for smooth transition */
+            box-shadow: 0 6px 15px rgba(230, 126, 34, 0.25);
+            border: none;
+            cursor: pointer;
         }
         .btn-primary:hover {
-            background-color: #d35400;
-            transform: translateY(-3px); /* More pronounced lift */
+            background: linear-gradient(45deg, var(--dark-orange), #cc6d1e); /* Darker gradient on hover */
+            transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(211, 84, 0, 0.35);
         }
 
         /* Card styles - more subtle, elegant design */
         .card {
             background-color: white;
-            border-radius: 1.5rem; /* Even more rounded corners */
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08); /* Lighter, larger shadow */
-            padding: 3.5rem; /* More generous padding */
+            border-radius: 1.5rem;
+            box-shadow: var(--card-shadow);
+            padding: 3.5rem;
             transition: transform 0.4s ease, box-shadow 0.4s ease;
-            border: none; /* No visible border */
-            overflow: hidden; /* Ensures content stays within rounded corners */
+            border: none;
+            overflow: hidden;
+            animation: fadeIn 1s ease-out; /* Added animation */
         }
         .card:hover {
-            transform: translateY(-15px) scale(1.02); /* More significant lift and scale */
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15); /* Stronger, more diffused shadow on hover */
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: var(--card-hover-shadow);
         }
 
         /* Hero Section with Background Image - improved overlay and text */
@@ -86,8 +130,8 @@
             background-attachment: fixed;
             color: white;
             text-align: center;
-            padding: 6rem 0; /* More vertical padding */
-            border-bottom-left-radius: 2rem; /* Rounded bottom corners */
+            padding: 6rem 0;
+            border-bottom-left-radius: 2rem;
             border-bottom-right-radius: 2rem;
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
@@ -98,26 +142,33 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.75); /* Slightly darker overlay for better text contrast */
+            background-color: rgba(0, 0, 0, 0.75);
             z-index: -1;
         }
         .hero-section-bg .container {
             position: relative;
             z-index: 2;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Softer text shadow */
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
         }
         .hero-section-bg h1 {
-            font-size: 5rem; /* Even larger hero heading */
+            font-size: 5rem;
             font-weight: 900;
             line-height: 1.1;
             margin-bottom: 1.5rem;
+            animation: slideInLeft 1s ease-out; /* Added animation */
         }
         .hero-section-bg p {
-            font-size: 1.6rem; /* Slightly larger hero paragraph */
+            font-size: 1.6rem;
             font-weight: 400;
             margin-bottom: 2.5rem;
-            max-width: 4xl; /* Wider text block */
+            max-width: 4xl;
             opacity: 0.95;
+            animation: slideInRight 1s ease-out 0.2s forwards; /* Added animation with delay */
+            opacity: 0; /* Start hidden for animation */
+        }
+        .hero-section-bg .btn-primary {
+            animation: fadeIn 1s ease-out 0.4s forwards; /* Added animation with delay */
+            opacity: 0; /* Start hidden for animation */
         }
 
         /* About Section with Background Image - improved overlay and text */
@@ -130,7 +181,7 @@
             overflow: hidden;
             background-attachment: fixed;
             color: white;
-            padding: 6rem 0; /* Consistent vertical padding */
+            padding: 6rem 0;
         }
         #about::before {
             content: '';
@@ -139,19 +190,19 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.7); /* Consistent overlay */
+            background-color: rgba(0, 0, 0, 0.7);
             z-index: -1;
         }
         #about .section-heading {
             color: white;
         }
         #about p {
-            color: #f0f0f0; /* Lighter text for better contrast */
-            font-size: 1.25rem; /* Consistent paragraph size */
+            color: #f0f0f0;
+            font-size: 1.25rem;
         }
         #about img {
-            border-radius: 1.5rem; /* Consistent rounded corners */
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2); /* Stronger shadow for images */
+            border-radius: 1.5rem;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
         }
 
         /* Packages Section with Background Image - refined overlay */
@@ -163,7 +214,7 @@
             z-index: 1;
             overflow: hidden;
             background-attachment: fixed;
-            padding: 6rem 0; /* Consistent vertical padding */
+            padding: 6rem 0;
         }
         #packages::before {
             content: '';
@@ -172,33 +223,33 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(255, 255, 255, 0.85); /* Slightly less transparent for better card readability */
+            background-color: rgba(255, 255, 255, 0.85);
             z-index: -1;
         }
         #packages .section-heading {
-            color: #212529;
+            color: var(--text-dark);
         }
         #packages .card {
             background-color: white;
-            border: 1px solid #e0e0e0; /* Subtle border for definition */
+            border: 1px solid #e0e0e0;
         }
         #packages .card ul {
-            list-style: none; /* Remove default list style */
+            list-style: none;
             padding-left: 0;
         }
         #packages .card li {
-            font-size: 1.15rem; /* Slightly larger list items */
-            margin-bottom: 0.75rem; /* More space between items */
+            font-size: 1.15rem;
+            margin-bottom: 0.75rem;
         }
         #packages .card li i {
-            font-size: 2.25rem; /* Larger checkmark icons */
-            color: #28a745; /* Brighter green for checkmarks */
+            font-size: 2.25rem;
+            color: #28a745;
         }
 
 
         /* Floating Icons */
         .whatsapp-float, .call-float {
-            position: fixed; /* Crucial for floating */
+            position: fixed;
             width: 60px;
             height: 60px;
             font-size: 28px;
@@ -209,73 +260,75 @@
             color: white;
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
-            z-index: 9999; /* Very high z-index to ensure visibility */
+            z-index: 9999;
+            animation: pulse 2s infinite ease-in-out; /* Added pulse animation */
         }
         .whatsapp-float:hover, .call-float:hover {
             transform: scale(1.1);
             box-shadow: 0 7px 14px rgba(0, 0, 0, 0.3);
+            animation: none; /* Stop pulsing on hover */
         }
 
         .whatsapp-float {
-            bottom: 20px; /* Position from bottom */
-            right: 20px; /* Position from right */
-            background-color: #28a745; /* WhatsApp green */
+            bottom: 20px;
+            right: 20px;
+            background-color: #28a745;
         }
         .whatsapp-float:hover {
             background-color: #218838;
         }
 
         .call-float {
-            bottom: 100px; /* Position above WhatsApp icon */
-            right: 20px; /* Position from right */
-            background-color: #007bff; /* Call button blue */
+            bottom: 100px;
+            right: 20px;
+            background-color: var(--accent-blue); /* Using accent blue */
         }
         .call-float:hover {
-            background-color: #0056b3;
+            background-color: var(--dark-blue);
         }
 
         /* Logo and Company Name */
         .header-logo {
-            height: 75px; /* Adjusted logo height */
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* Softer shadow */
-            border-radius: 0.75rem; /* More rounded */
+            height: 75px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            border-radius: 0.75rem;
         }
         .company-name {
-            font-size: 2.6rem; /* Adjusted font size */
-            font-weight: 800; /* Bolder */
-            color: #212529; /* Darker */
-            text-shadow: none; /* Removed text shadow for cleaner look */
+            font-size: 2.6rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            text-shadow: none;
         }
 
         /* Contact form input styling - more subtle focus */
         .contact-form-input {
-            background-color: #fefefe; /* Slightly off-white */
-            color: #495057; /* Darker text */
-            border: 1px solid #ced4da; /* Subtle border */
-            padding: 1rem; /* More padding */
-            border-radius: 0.6rem; /* Slightly more rounded */
+            background-color: #fefefe;
+            color: #495057;
+            border: 1px solid #ced4da;
+            padding: 1rem;
+            border-radius: 0.6rem;
             transition: border-color 0.2s ease, box-shadow 0.2s ease;
         }
         .contact-form-input:focus {
-            border-color: #e67e22;
-            box-shadow: 0 0 0 0.2rem rgba(230, 126, 34, 0.25); /* Softer glow */
+            border-color: var(--primary-orange);
+            box-shadow: 0 0 0 0.2rem rgba(230, 126, 34, 0.25);
         }
         .contact-form-input::placeholder {
-            color: #6c757d; /* More neutral placeholder */
+            color: #6c757d;
         }
 
         /* Footer styling - darker, more elegant */
         footer {
-            background-color: #212529; /* Very dark gray/black */
-            color: #e9ecef; /* Lighter text */
-            padding: 3rem 0; /* More padding */
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            padding: 3rem 0;
         }
         footer a {
-            color: #e9ecef;
+            color: var(--text-light);
             transition: color 0.3s ease;
         }
         footer a:hover {
-            color: #e67e22;
+            color: var(--primary-orange);
         }
 
         /* Contact Section Background Image - refined overlay for form readability */
@@ -286,8 +339,8 @@
             background-attachment: fixed;
             position: relative;
             z-index: 1;
-            padding: 6rem 0; /* Consistent vertical padding */
-            border-top-left-radius: 2rem; /* Rounded top corners */
+            padding: 6rem 0;
+            border-top-left-radius: 2rem;
             border-top-right-radius: 2rem;
             box-shadow: 0 -10px 20px rgba(0,0,0,0.1);
         }
@@ -298,20 +351,20 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.7); /* Darker overlay for text and form contrast */
+            background-color: rgba(0, 0, 0, 0.7);
             z-index: -1;
         }
         #contact .section-heading {
             color: white;
         }
         #contact p {
-            color: #dee2e6; /* Lighter text for readability */
+            color: #dee2e6;
         }
         #contact form {
-            background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent white form background */
-            padding: 3.5rem; /* More padding */
-            border-radius: 1.5rem; /* More rounded */
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15); /* Stronger shadow */
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 3.5rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
         }
     </style>
 </head>
@@ -553,7 +606,7 @@
                     </div>
                     <h3 class="text-2xl font-semibold mb-3">Discover Top Selling Items in Your Area</h3>
                     <p class="text-gray-600 text-lg mb-6">Want to know the top-selling items in your area? Contact us to find out!</p>
-                    <a href="https://wa.me/919711737450?text=Hello! I'm interested in knowing the top selling items in my area." class="btn-primary inline-block" target="_blank">
+                    <a href="https://wa.me/919711737450?text=Hello! I'm interested in knowing the top selling items in my area." class="btn-primary inline-block">
                         WhatsApp Me
                     </a>
                 </div>
@@ -667,6 +720,29 @@
                     });
                 });
             }
+
+            // Intersection Observer for fade-in animations on sections
+            const faders = document.querySelectorAll('.section-heading, .card, .hero-section-bg p, .hero-section-bg .btn-primary');
+            const appearOptions = {
+                threshold: 0.1, /* Element is 10% in view */
+                rootMargin: "0px 0px -50px 0px" /* Start animation slightly before element enters view */
+            };
+
+            const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    } else {
+                        entry.target.style.animationPlayState = 'running'; /* Ensure animation plays */
+                        appearOnScroll.unobserve(entry.target);
+                    }
+                });
+            }, appearOptions);
+
+            faders.forEach(fader => {
+                fader.style.animationPlayState = 'paused'; /* Pause animations initially */
+                appearOnScroll.observe(fader);
+            });
         });
     </script>
 
